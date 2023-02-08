@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-## Description: plz - instead of running 'foo -h', do `plz foo` to get pretty usage text
+## Description: plz - instead of running `foo -h`, or `foo bar -h`, do `plz foo`, or `plz foo bar` to get pretty usage text
 
 checkDeps() {
   if ! command -v bat &>/dev/null; then
