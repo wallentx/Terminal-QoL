@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -e
+
+## Description: Automatically updates README.md
+
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+HOME_BIN=$PROJECT_ROOT/bin
+
+README_TOP=$(
+  cat <<-EOF
+<h1 align="center">Terminal-QoL</h1>
+<h4 align="center">Collection of scripts I use on the daily to improve my quality of life when using the terminal</h4>
+
+# Index
+
+- 📂 __bin__
+EOF
+)
+
+README_BOTTOM=$(
+  cat <<-EOF
+
+
+EOF
+)
+
+echo "$README_TOP" >README.md
+
+for SCRIPT in "$HOME_BIN"/*; do
+  GHFILENAME=$(basename "$SCRIPT")
+  DESCRIPTION=$(sed -n 's/^## Description: //p' "$SCRIPT")
+  echo -e "   - 📄 [${GHFILENAME//-/\\-}](/bin/$GHFILENAME)" >>README.md
+  if [[ -n $DESCRIPTION ]]; then
+    echo -e "      - _${DESCRIPTION}_" >>README.md
+  fi
+done
+
+echo "$README_BOTTOM" >>README.md

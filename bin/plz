@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+
+## Description: plz - instead of running 'foo -h', do `plz foo` to get pretty usage text
+
+checkDeps() {
+  if ! command -v bat &>/dev/null; then
+    echo "ERROR: Missing 'bat'"
+    echo "Get it - https://github.com/sharkdp/bat"
+    exit 1
+  fi
+}
+
+CMDS=$*
+
+batSignal() {
+  $CMDS --help | bat -Ppl cmd-help
+}
+
+checkDeps
+batSignal

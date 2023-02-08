@@ -1,0 +1,24 @@
+---
+name: Update README.md Index
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'bin/**'
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Update README.md
+        run: |
+          .github/actions/updateMd
+      - uses: EndBug/add-and-commit@main
+        with:
+          add: 'README.md'
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
