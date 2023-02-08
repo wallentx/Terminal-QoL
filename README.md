@@ -5,5 +5,5 @@
 
 - 📂 __bin__
    - 📄 [plz](/bin/plz)
-      - _plz - instead of running 'foo -h', do `plz foo` to get pretty usage text_
+      - _plz - instead of running `foo -h`, or `foo bar -h`, do `plz foo`, or `plz foo bar` to get pretty usage text_
 
