@@ -1,6 +1,7 @@
 ---
 name: Update README.md Index
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
