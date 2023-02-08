@@ -4,4 +4,6 @@
 # Index
 
 - 📂 __bin__
+   - 📄 [plz](/bin/plz)
+      - _plz - instead of running 'foo -h', do `plz foo` to get pretty usage text_
 
